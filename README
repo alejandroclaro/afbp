@@ -1,0 +1,142 @@
+Alex's Firewall ByPasser README
+===============================
+
+ Alex's Firewall ByPasser Copyright (c) 2006 Alejandro Claro.
+
+ This program is released under the GPL with the additional exemption
+ that compiling, linking, and OpenSSL. You may provide binary packages
+ linked to the OpenSSL libraries, provided that all other requirements
+ of the GPL are met. See file COPYING for details.
+
+What is Alex's Firewall ByPasser?
+=================================
+
+ Alex's Firewall ByPasser is another TCP tunnel for HTTP proxies.
+
+ It allow network connections over HTTP proxies. This should work under all
+ POSIX complaint systems and all proxies allowing https CONNECT.
+
+ It have been tested for MSN Messenger, emule, bittorrent, ftp(passive only), 
+ yahoo messenger, irc(xchat) and firefox on Fedora Core 3, FreeBSD 6.0 and
+ MacOSX.
+
+Why I made another Firewall ByPasser?
+======================================
+
+ A short answer, because I think I can make one more useful (see features).
+
+FEATURES:
+=========
+
+ * multi-thread design:
+
+   It can handle a huge number of simultaneous connections without problems.
+
+ * multiple proxies:
+
+   It use a list of available proxies to make connections. So every connection 
+   can be done over a different proxy.
+
+ * ability to check proxy lists:
+
+   It is able to check the proxies before real use. This feature can be used
+   to clean and optimize a proxy list.
+
+ * curses interface:
+ 
+   It have a nice 'top' like curses interface.
+
+ * daemon mode:
+
+   It is able to run in background & quiet mode. 
+  
+ * socks4 and socks5 protocol support:
+
+   Partial support for Socks4 and Socks5. Only CONNECT method (Socks4 & Socks5)
+   and NO AUTHENTICATION (Socks5) is implemented at this time, but it is enough
+   in most of the cases (future versions will implement complete support
+   of both protocols).
+
+Future versions FEATURES:
+=========================
+
+ * Complete implementation of Socks4 and Socks5 protocols.
+ 
+ * Besides the socks server, I will make a dynamic library version 
+   able to overload the connect() libc function. So application without 
+   support for Socks4 or Socks5 will be able to pass over the firewall too.
+    
+ * Nice installation scripts (no autotools).
+
+ * An improved curses interface.
+
+ * SSL support.
+
+ * IPv6 support.
+
+Limitations:
+============
+
+ Alex's Firewall ByPasser should work with every HTTP proxy, with the following exceptions:
+
+   * MS Proxies with NTLM authentication. NTLM is a proprietary authentication method from Microsoft,
+     not a standard authentication method. 
+
+   * HTTP/1.0 and HTTP/1.1 Proxies without the CONNECT method. 
+
+Requirements:
+=============
+
+Version 0.5.0 and above:
+
+ * pthread library    (Posix 1003.1c compatible system).
+ * ncurses            (http://www.gnu.org/software/ncurses/ncurses.html).
+
+Version 0.1.0 - 0.4.1:
+
+ * pthread library    (Posix 1003.1c compatible system).
+
+Compiling and Installation:
+===========================
+
+Type this:
+   
+	make
+
+Become root and type:
+
+	cp fbpss /usr/local/bin/.
+
+  you can change /usr/local/bin/ to your prefer binary directory (eg. ~/bin/). 
+
+Quick Usage:
+============
+
+ - To run in standard mode
+   (socks server on 1080 port with curses user interface)
+
+ # fbpss proxy.list
+
+ - To run socks server on daemon mode (background & quiet) on port 8080
+ 
+ # fbpss proxy.list -dp8080
+
+ Note that 'proxy.list' is a required argument. For syntax of the 
+ proxy.list file check list.example file in the same directory of this 
+ README.
+
+ - Configure your application to use Socks4(a) or Socks5 proxy server on host
+   127.0.0.1 and port 1080 [or the port you choose with the '-p' command 
+   line parameter (eg. 8080)].
+    
+You can get more information about Alex's Firewall ByPasser:
+============================================================
+
+ http://afbp.sourceforge.net/
+
+EXPLICIT WARNING:
+=================
+
+ I DISCLAIM ALL RESPONSIBILITY FOR PROPER WORKING AND USE OF THIS SOFTWARE.
+ IF IT BACKFIRES ON YOU, IT IS YOUR FAULT.
+ YOU HAVE BEEN WARNED!!

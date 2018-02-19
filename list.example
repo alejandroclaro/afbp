@@ -1,0 +1,20 @@
+#
+# PROXIES LIST FILE
+#
+# syntax:
+#
+#     proxy_host:proxy_port [username[:password]] # comment
+#
+# limitations:
+#
+# - don't use TAB to separate columns. 
+# - if username:password field is used, 
+#   it can't contain space or '#' character.
+#
+###########################################################
+
+# ON PORT 80
+127.0.0.1:80
+11.22.33.444:80                # fake proxy!
+www.testing.net:80 root:passwd # another fake proxy
+
